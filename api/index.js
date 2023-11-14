@@ -23,14 +23,14 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 app.get('/api/index/_api/package.json', function(req, res, next) {
     console.log('requested');
-    fs.readFile(__dirname + '../package.json', function(err, data) {
+    fs.readFile(__dirname + '/package.json', function(err, data) {
       if(err) return next(err);
       res.type('txt').send(data.toString());
     });
   });
   
 app.get('/api/index', function(req, res) {
-  res.sendFile(__dirname + '../views/index.html');
+  res.sendFile(__dirname + '/index.html');
 })
 
 // Respond not found to all the wrong routes
