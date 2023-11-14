@@ -21,7 +21,7 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
-app.get('/_api/package.json', function(req, res, next) {
+app.get('/api/index/_api/package.json', function(req, res, next) {
     console.log('requested');
     fs.readFile(__dirname + '../package.json', function(err, data) {
       if(err) return next(err);
@@ -29,7 +29,7 @@ app.get('/_api/package.json', function(req, res, next) {
     });
   });
   
-app.get('/', function(req, res) {
+app.get('/api/index', function(req, res) {
   res.sendFile(__dirname + '../views/index.html');
 })
 
