@@ -21,11 +21,7 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
-
-app.use('/public', express.static(process.cwd() + '/public'));
-
-app.route('/_api/package.json')
-  .get(function(req, res, next) {
+app.get('/_api/package.json', function(req, res, next) {
     console.log('requested');
     fs.readFile(__dirname + '../package.json', function(err, data) {
       if(err) return next(err);
@@ -33,10 +29,9 @@ app.route('/_api/package.json')
     });
   });
   
-app.route('/')
-    .get(function(req, res) {
-		  res.sendFile(process.cwd() + '/views/index.html');
-    })
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '../views/index.html');
+})
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
