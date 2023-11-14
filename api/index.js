@@ -27,10 +27,13 @@ app.get('/api/index/_api/package.json', function(req, res, next) {
       if(err) return next(err);
       res.type('txt').send(data.toString());
     });
-  });
+});
   
 app.get('/api/index', function(req, res) {
-  res.sendFile(__dirname + '/home.html');
+    fs.readFile(__dirname + '/package.json', function(err, data) {
+        if(err) return next(err);
+        res.type('txt').send(data.toString());
+    });
 })
 
 // Respond not found to all the wrong routes
