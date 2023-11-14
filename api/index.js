@@ -30,7 +30,7 @@ app.get('/api/index/_api/package.json', function(req, res, next) {
   });
   
 app.get('/api/index', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/home.html');
 })
 
 // Respond not found to all the wrong routes
